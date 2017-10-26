@@ -1,0 +1,30 @@
+version: '2'
+services:
+  nginx:
+    image: "srflaxu40/nginx-base:grafana"
+    ports:
+    - "20025:20025"
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+      io.rancher.stack.name: "srflaxu40/nginx-base:grafana"
+      io.rancher.scheduler.affinity:host_label: cluster-type=memory
+      io.rancher.scheduler.affinity:container_label: com.srflaxu40.app=grafana
+      com.srflaxu40.environment: "$ENVIRONMENT"
+    restart: always
+    stdin_open: true
+    links:
+     - grafana
+  grafana:
+    image: "srflaxu40/grafana:latest"
+    ports:
+    - 3000
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+      io.rancher.stack.name: "srflaxu40/grafana:latest"
+      io.rancher.scheduler.affinity:host_label: cluster-type=memory
+      com.srflaxu40.environment: "$ENVIRONMENT"
+      com.srflaxu40.app: "grafana"
+    restart: always
+    stdin_open: true

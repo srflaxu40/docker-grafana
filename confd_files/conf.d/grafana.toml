@@ -1,0 +1,19 @@
+[template]
+
+src = "grafana.ini.tmpl"
+dest = "grafana.ini"
+backend = "redis"
+prefix = "/"
+scheme = "http"
+verbose = true
+
+keys = [
+    "/grafana/env-token/MYSQL_URL",
+    "/grafana/env-token/MYSQL_PASS",
+    "/grafana/env-token/ADMIN_PASSWORD",
+    "/grafana/env-token/AWS_ACCESS_KEY",
+    "/grafana/env-token/AWS_SECRET_KEY"
+]
+
+owner = "root"
+mode = "0755"

@@ -1,0 +1,6 @@
+version: '2'
+services:
+  grafana:
+    upgrade_strategy:
+      start_first: true
+    scale: 2
