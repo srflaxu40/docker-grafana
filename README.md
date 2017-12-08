@@ -1,17 +1,19 @@
 # docker-grafana
 
+## Development Setup
+* Install [confd](https://github.com/kelseyhightower/confd/blob/master/docs/installation.md).
+
+## Running
+
 * Build:
-  *  `docker build -t grafana-local-test -f Dockerfile .`
+  * `make build`
 
 * Run:
   * `docker run -p 3000:3000 -itd grafana-local-test`
 
-* Using WorldPing requires setting API key manually until API key enabling is automated (@TO-DO).
+* Push:
+  * `make push`
 
-* Confd rotation:
-  `confd -onetime -interval=6 -confdir="${WORKSPACE}/confd_files" -backend="redis" -keep-stage-file -node ${REDIS_DOCKER}:6379`
-
-## Confd:
-  * Confd files are rotated in the `rancher-deploy-grafana` job by a sed on an environment specific token, and then by running
-    the following:
-    * `confd -onetime -interval=6 -confdir="${WORKSPACE}/confd_files" -backend="redis" -keep-stage-file -node ${REDIS_DOCKER}:6379`
+* Rotate:
+  * `make rotate`
+  * `confd -onetime -backend env -config-file confd_files/conf.d/grafana.toml -confdir ./confd_files/`
