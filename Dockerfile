@@ -1,6 +1,6 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
-ENV GRAFANA_VERSION 4.4.3
+ENV GRAFANA_VERSION 4.6.2
 
 COPY run.sh /run.sh
 COPY ca.crt /etc/ssl/certs/ca.crt
@@ -20,9 +20,6 @@ RUN apt-get update && \
     grafana-cli plugins install grafana-clock-panel && \
     grafana-cli plugins install ryantxu-ajax-panel && \
     grafana-cli plugins install  bessler-pictureit-panel
-
-COPY grafana.ini /etc/grafana/grafana.ini
-COPY ldap.toml /etc/grafana/ldap.toml
 
 WORKDIR /var/lib/grafana/plugins
 

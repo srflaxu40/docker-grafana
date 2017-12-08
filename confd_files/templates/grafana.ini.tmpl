@@ -67,15 +67,15 @@ router_logging = true
 # Either "mysql", "postgres" or "sqlite3", it's your choice
 type = mysql
 port = 3306
-address = {{getv "/grafana/env-token/MYSQL_URL"}}
-host = {{getv "/grafana/env-token/MYSQL_URL"}}:3306
+address = {{getenv "MYSQL_URL"}}
+host = {{getenv "MYSQL_URL"}}:3306
 name = grafana
 user = grafana
-password = '{{getv "/grafana/env-token/MYSQL_PASS"}}'
+password = '{{getenv "MYSQL_PASS"}}'
 
 # Use either URL or the previous fields to configure the database
 # Example: mysql://user:secret@host:port/database
-url = mysql://grafana:{{getv "/grafana/env-token/MYSQL_PASS"}}@{{getv "/grafana/env-token/MYSQL_URL"}}:3306/grafana
+url = mysql://grafana:{{getenv "MYSQL_PASS"}}@{{getenv "MYSQL_URL"}}:3306/grafana
 
 # For "postgres" only, either "disable", "require" or "verify-full"
 ;ssl_mode = disable
@@ -142,7 +142,7 @@ url = mysql://grafana:{{getv "/grafana/env-token/MYSQL_PASS"}}@{{getv "/grafana/
 admin_user = admin
 
 # default admin password, can be changed before first start of grafana,  or in profile settings
-admin_password = {{getv "/grafana/env-token/ADMIN_PASSWORD"}}
+admin_password = {{getenv "ADMIN_PASSWORD"}}
 
 # used for signing
 ;secret_key = SW2YcwTIb9zpOOhoPsMm
@@ -161,8 +161,8 @@ admin_password = {{getv "/grafana/env-token/ADMIN_PASSWORD"}}
 [snapshots]
 # snapshot sharing options
 external_enabled = true
-external_snapshot_url = https://snapshots-origin.raintank.io
-external_snapshot_name = Publish to raintank
+external_snapshot_url = {{getenv "GRAFANA_URL"}}
+external_snapshot_name = Publish to Grafana
 
 # remove expired snapshot
 ;snapshot_remove_expired = true
@@ -392,9 +392,9 @@ url = https://grafana.net
 provider = s3
 
 [external_image_storage.s3]
-bucket_url = http://org-grafana-images.s3.amazonaws.com/
-access_key = {{getv "/grafana/env-token/AWS_ACCESS_KEY"}}
-secret_key = {{getv "/grafana/env-token/AWS_SECRET_KEY"}}
+bucket_url = {{getenv "BUCKET_URL"}}
+access_key = {{getenv "AWS_ACCESS_KEY"}}
+secret_key = {{getenv "AWS_SECRET_KEY"}}
 
 [external_image_storage.webdav]
 ;url =
