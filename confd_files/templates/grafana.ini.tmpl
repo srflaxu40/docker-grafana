@@ -392,7 +392,7 @@ url = https://grafana.net
 provider = s3
 
 [external_image_storage.s3]
-bucket_url = {{getenv "BUCKET_URL"}}
+bucket = {{getenv "BUCKET_URL"}}
 region     = {{getenv "REGION"}}
 access_key = {{getenv "AWS_ACCESS_KEY"}}
 secret_key = {{getenv "AWS_SECRET_KEY"}}
