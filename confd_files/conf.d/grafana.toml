@@ -11,7 +11,7 @@ keys = [
     "BUCKET_URL",
     "GRAFANA_URL",
     "MYSQL_URL",
-    "MYSQL_PASS".
+    "MYSQL_PASS",
     "REGION"
 ]
 
