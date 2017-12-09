@@ -1,4 +1,4 @@
-# Makefile for building stat-engine
+# Makefile for building Grafana
 
 
 ORG ?= srflaxu40
