@@ -21,6 +21,9 @@ RUN apt-get update && \
 
 COPY grafana.ini /etc/grafana/grafana.ini
 
+RUN mkdir -p /var/lib/grafana/plugins && \
+    chmod -R 0755 /var/lib/grafana
+
 WORKDIR /var/lib/grafana/plugins
 
 RUN git clone https://github.com/briangann/grafana-sensu-datasource.git && \
