@@ -19,6 +19,8 @@ RUN apt-get update && \
     grafana-cli plugins install ryantxu-ajax-panel && \
     grafana-cli plugins install  bessler-pictureit-panel
 
+COPY grafana.ini /etc/grafana/grafana.ini
+
 WORKDIR /var/lib/grafana/plugins
 
 RUN git clone https://github.com/briangann/grafana-sensu-datasource.git && \
