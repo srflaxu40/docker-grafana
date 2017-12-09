@@ -3,7 +3,6 @@ FROM ubuntu:16.04
 ENV GRAFANA_VERSION 4.6.2
 
 COPY run.sh /run.sh
-COPY ca.crt /etc/ssl/certs/ca.crt
 
 RUN apt-get update && \
     apt-get install -y git wget curl && \
@@ -11,7 +10,6 @@ RUN apt-get update && \
     apt-get install -y adduser libfontconfig && \
     dpkg -i grafana_${GRAFANA_VERSION}_amd64.deb && \
     chmod +x /run.sh && \
-    chmod 0644 /etc/ssl/certs/ca.crt && \
     grafana-cli plugins install grafana-worldmap-panel && \
     grafana-cli plugins install raintank-worldping-app && \
     grafana-cli plugins install abhisant-druid-datasource && \
