@@ -19,8 +19,6 @@ RUN apt-get update && \
     grafana-cli plugins install ryantxu-ajax-panel && \
     grafana-cli plugins install  bessler-pictureit-panel
 
-COPY grafana.ini /etc/grafana/grafana.ini
-
 RUN mkdir -p /var/lib/grafana/plugins && \
     chmod -R 0755 /var/lib/grafana
 
