@@ -17,13 +17,6 @@ build:
 	.
 	echo "TAG=${TAG}" > tag.properties
 
-rotate:
-	confd \
-	-onetime \
-	-backend env \
-	-config-file confd_files/conf.d/grafana.toml \
-	-confdir ./confd_files/
-
 push:
 	docker push \
 	$(ORG)/$(REPO):${TAG}
