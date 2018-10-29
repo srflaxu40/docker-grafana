@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV GRAFANA_VERSION 5.2.4
+ENV GRAFANA_VERSION 5.3.2
 
 COPY run.sh /run.sh
 
