@@ -17,7 +17,9 @@ RUN apt-get update && \
     grafana-cli plugins install grafana-piechart-panel && \
     grafana-cli plugins install grafana-clock-panel && \
     grafana-cli plugins install ryantxu-ajax-panel && \
-    grafana-cli plugins install  bessler-pictureit-panel
+    grafana-cli plugins install  bessler-pictureit-panel && \
+    grafana-cli plugins install mtanda-histogram-panel && \
+    grafana-cli plugins install grafana-simple-json-datasource
 
 RUN mkdir -p /var/lib/grafana/plugins && \
     chmod -R 0755 /var/lib/grafana
