@@ -1,12 +1,12 @@
 FROM ubuntu:16.04
 
-ENV GRAFANA_VERSION 6.7.0
+ENV GRAFANA_VERSION 6.3.5
 
 COPY run.sh /run.sh
 
 RUN apt-get update && \
     apt-get install -y git wget curl && \
-    wget https://dl.grafana.com/oss/release/grafana_${GRAFANA_VERSION}_amd64.deb && \
+    wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_${GRAFANA_VERSION}_amd64.deb && \
     apt-get install -y adduser libfontconfig && \
     dpkg -i grafana_${GRAFANA_VERSION}_amd64.deb && \
     chmod +x /run.sh && \
